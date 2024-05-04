@@ -16,3 +16,18 @@ function createID (id) {
 }
 
 createID(g.next())
+
+
+
+
+function *generator(){
+    let i = 0;
+    while(true){
+        yield i;
+        i++;
+    }
+}
+
+
+const g2 = generator();
+console.log(g2.next());

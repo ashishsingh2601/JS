@@ -1,0 +1,89 @@
+:root {
+    --background-color: #e8e8e9; 
+    --color: #393e42; 
+  }
+
+  body{
+    background-color: var(--background-color);
+    color: var(--color);
+  }
+
+  .btn{
+    border: none;
+    text-decoration: none;
+  }
+
+.kanban-board {
+  display: flex;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin: 1rem 3rem;
+}
+#toggle-theme{
+    position:fixed;
+    top: 1.5rem;
+    right: 3rem;
+    z-index: 999;
+}
+
+h1 {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  letter-spacing: 0.15rem;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.task {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin-bottom: 5px;
+    cursor: move;
+    border-radius: 6px;
+    height: 3rem;
+    box-shadow: 3px 3px #ccc;
+    /* /* display: flex; */
+    align-items: center;
+    /* justify-content: center; */ 
+  }
+  
+
+.column {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 10px;
+  height: 60vh;
+  border-radius: 1rem;
+}
+
+.column h2 {
+  margin-bottom: 1.8rem;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+.column:not(:last-child) {
+    box-shadow: 3px 3px 3px 3px #ccc;
+}
+
+.column:last-child{
+    border: 3px dotted #ccc;
+}
+.column:last-child .task {
+    background-color: rgb(184, 27, 27);
+    color: #fff;
+}
+.column:nth-child(3) .task {
+    background-color: rgb(11, 166, 0);
+    color: #fff;
+}
+.column:nth-child(2) .task {
+    background-color: rgb(209, 185, 4);
+    color: #fff;
+}
+.column:first-child .task {
+    background-color: rgb(21, 108, 230);
+    color: #fff;
+}
+
+

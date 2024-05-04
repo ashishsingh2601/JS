@@ -24,6 +24,30 @@ function curry (func) {
     }
 }
 
+function curry(fn){
+    return function curriedFn(...args) {
+        if(args.length >= fn.length){
+            return fn(...args);
+        }else{
+            return function(...next){
+                return curriedFn(...next, ...args);
+            }
+        }
+    }
+}
+
+function curry (fn){
+    return function curriedFn(...args) {
+        if(args.length >= fn.length){
+            return fn(...args);
+        }else{
+            return function(...next){
+                return curriedFn(...next, ...args);
+            }
+        }
+    }
+}
+
 
 const sum = (a, b, c) => a + b + c;
 

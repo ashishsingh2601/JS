@@ -64,6 +64,23 @@ function throttle (func, limit) {
 }
 
 
+const throttle = (fn, context, limit) => {
+  let throttled = false;
+
+  return function (...args) {
+    if(!throttled){
+      fn.call(context || this, ...args);
+      throttled = true;
+      
+      setTimeout(() => {
+        throttled = false;
+      }, limit)
+      
+    }
+  } 
+}
+
+
 function deb (func, delay) {
   let timeout =  0;
 
@@ -129,4 +146,22 @@ Array.prototype.fEach = function (callback) {
     callback(this[i]);
   }
   
+}
+
+
+
+
+const debounce = (fn, context, delay) => {
+  let timer;
+
+  return function (...args) {
+    if(timer) clearTimeout(timer);
+
+    timer = setTimeout(() => {
+      fn.call(context || this, ...args);
+    }, delay)
+
+
+  }
+
 }

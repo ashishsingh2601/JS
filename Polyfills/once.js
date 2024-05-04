@@ -2,7 +2,7 @@
 function once(func) {
   let ranOutput;
 
-  return function () {
+  return function (...arguments) {
     if (func) ranOutput = func.apply(this, arguments);
     func = null;
 
@@ -42,3 +42,35 @@ console.log(res());
 console.log(res());
 console.log(res());
 console.log(res());
+
+
+
+const onceee = (fn, context = {}) => {
+  let ran;
+
+  return function (...args) {
+    if(fn){
+      ran = fn.apply(context || this, [...args]);
+      ran = null;
+    }
+    return ran;
+  }
+}
+
+
+const memoizer = (fn, context) => {
+  const map = new Map();
+
+  return function(...args) {
+    let key = JSON.stringify(...args);
+
+    if(map.has(key)){
+      return map.get(key);
+    }else{
+      let result = fn.call(context || this, ...args);
+      map.set(key, result);
+      return result;
+    }
+  }
+}
+

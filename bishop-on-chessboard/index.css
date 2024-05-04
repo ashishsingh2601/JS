@@ -1,0 +1,24 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.chess__board{
+    margin: 0 auto;
+}
+.box{
+    width: 60px;
+    height:60px;
+    cursor: pointer;
+    border: 1px solid #101212;
+}
+
+.white{
+    background-color: #fff;
+}
+.black{
+    background-color: #101212;
+}
+.orange{
+    background-color: orange;
+}
