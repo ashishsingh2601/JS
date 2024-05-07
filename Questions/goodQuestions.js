@@ -53,6 +53,124 @@ console.log(rotator(arr2, 100, "right"));
 
 
 
+const person = {
+    name: "Ashish",
+    age: "24",
+}
+
+// console.log(Object.entries(person));
+
+const objToArray = (obj) => {
+  const objKeys = Object.keys(obj);
+
+  const result = objKeys?.map((key) => {
+    const value = obj[key];
+    return [key, value];
+  })
+
+  return result
+}
+
+console.log(objToArray(person))
+
+//pair sum
+let arr6 = [1, 2, 4, 5, 6, 3, 7, 8];
+let target = 10;
+
+function findPairSum(arr, target) {
+  let lookup = {};
+  let output = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    let remaining = target - arr[i];
+
+    if (lookup[remaining]) {
+      output.push([arr[i], remaining]);
+    }
+
+    lookup[arr[i]] = true;
+  }
+  
+  return output;
+}
+
+console.log(findPairSum(arr, target));
+
+
+//string split
+const newSplit = (string, delimeter) => {
+    const output = [];
+    if(delimeter === '') return Array.from(string);
+
+    const performSplit = (str, index) => {
+        if(index >= string.length) return;
+
+        const dIndex = str.indexOf(delimeter);
+        if(dIndex >= 0){
+            output.push(str.substring(0, dIndex))
+            performSplit(str.substring(dIndex + delimeter.length), dIndex + delimeter.length);
+        }else{
+            output.push(str);
+        }
+    }
+
+    performSplit(string, 0);
+    return output;
+}
+
+console.log(newSplit("A(s'[]s-h,i=sh", ','))
+
+// merge sort
+function mergeSort(arr){
+
+    if(arr.length <= 1) return arr;
+
+    let mid = Math.floor(arr.length / 2);
+
+    let left = mergeSort(arr.slice(0, mid));
+    let right = mergeSort(arr.slice(mid));
+
+    return merge(left, right);
+
+}
+
+function merge(left, right){
+    let result = [];
+
+    while(left.length && right.length){
+        if(left[0] < right[0]){
+            result.push(left.shift())
+        }else{
+            result.push(right.shift())
+        }
+    }
+
+    return [...result, ...left, ...right];
+}
+
+
+console.log(mergeSort([1, 5, 2, 543, 13, 53, 533, 5252, 23, 422, 42, 44, 543 , 535,65, 655_54]))
+
+// range iterable
+const range = {
+    start: 0,
+    end: 5,
+    [Symbol.iterator]() {
+        let i = this.start;
+        let j = this.end;
+        return {
+            
+            next() {
+                return {
+                    value: i,
+                    done: i++ > j,
+                }
+            }
+        }
+    }
+}
+
+console.log([...range])
 
 // array flattner
 const arr3 = [1,2,[3,4,[5,6,[7,8]]]];
@@ -70,6 +188,28 @@ function arrayFlattner(arr) {
 }
 
 console.log(arrayFlattner(arr));
+
+// object flattner
+const flatner = (obj, parent) => {
+    let result = {
+    
+    }
+
+    const generateFlat = (obj, parent) => {
+      
+        for(let key in obj){
+            let newParent = parent + key
+            if(typeof obj[key] === "object" && typeof obj[key] !== null){
+                    generateFlat(obj[key], newParent+".");
+            }else{
+                result[newParent] = obj[key];
+            }
+        }
+    }
+
+    generateFlat(obj, parent);
+    return result;
+}
 
 
 
