@@ -540,6 +540,7 @@ console.log(findMaxDiff([1, 2, 4, 6, 98, 639, 369, 99]))
 
 
 function generate(length) {
+
   const charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 //   const charSetArr = charSet.split("");
   let randomString = "";
